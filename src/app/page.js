@@ -1,65 +1,334 @@
+"use client";
+
+import Link from "next/link";
 import Image from "next/image";
+import {
+  Scale,
+  FileSearch,
+  MessageSquare,
+  ShieldCheck,
+  ArrowLeft,
+  Mail,
+  Phone,
+  Clock,
+  Award,
+  ChevronDown,
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <div
+      className="min-h-screen bg-slate-50 text-slate-800 font-sans"
+      dir="rtl"
+    >
+      {/* 📌 1. الشريط العلوي للتواصل والمعلومات */}
+      {/* <div className="bg-slate-950 text-slate-400 text-xs py-2 px-6 border-b border-slate-800 hidden md:block">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex gap-6">
+            <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-amber-500" /> الأحد - الخميس: 9:00 ص - 5:00 م</span>
+            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-500" /> +962 6 000 0000</span>
+          </div>
+          <div>
+            <span className="text-slate-300 font-medium">المنصة الذكية الأولى للخدمات والاستشارات القانونية</span>
+          </div>
+        </div>
+      </div> */}
+
+      {/* 📌 2. الهيدر ورأس الصفحة (Navbar) */}
+      <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            {/* <Scale className="h-6 w-6" /> */}
+            <Image src="/scale.png" alt="Scale" width={60} height={32} />
+            {/* <div>
+              <span className="font-bold text-xl text-stone-700 block leading-tight tracking-wide">المستشار القانوني</span>
+              <span className="text-[11px] text-red-900 font-semibold uppercase tracking-wider">نظام تحليل القضايا واللوائح</span>
+            </div> */}
+          </div>
+
+          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-700">
+            <a href="#hero" className="hover:text-red-900 transition-colors">
+              الرئيسية
+            </a>
+            <a href="#about" className="hover:text-red-900 transition-colors">
+              عن المنصة
+            </a>
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="#services"
+              className="hover:text-red-900 transition-colors"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              الخدمات الذكية
+            </a>
+            <a href="#contact" className="hover:text-red-900 transition-colors">
+              تواصل معنا
+            </a>
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="px-4 py-2 text-sm font-bold text-stone-700 hover:text-red-900 transition-colors"
             >
-              Learning
-            </a>{" "}
-            center.
+              تسجيل الدخول
+            </Link>
+            {/* <Link 
+              href="/dashboard" 
+              className="px-5 py-2.5 text-sm font-bold bg-red-900 hover:bg-red-800 text-stone-800 rounded-xl transition-all shadow-md flex items-center gap-2"
+            >
+              <span>دخول اللوحة</span>
+              <ArrowLeft className="h-4 w-4" />
+            </Link> */}
+          </div>
+        </div>
+      </header>
+
+      {/* 📌 3. قسم البداية الرئيسي (Hero Section) */}
+      <section
+        id="hero"
+        className="relative text-white py-32 px-6 overflow-hidden min-h-[85vh] flex items-center"
+      >
+        {/* خلفية الصورة */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/bg1.png"
+            alt="Legal Background"
+            fill
+            className="object-cover object-center filter grayscale contrast-125"
+            priority
+          />
+          {/* طبقة تظليل داكنة لضمان وضوح النصوص فوق الصورة */}
+          <div className="absolute inset-0 bg-stone-950/75"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* النصوص والأزرار (مرتبة على الجانب الأيمن بلغة الموقع) */}
+          <div className="lg:col-span-8 space-y-6 text-right">
+            <h1 className="text-4xl md:text-6xl font-black leading-tight text-slate-100">
+              خبرة قانونية معززة <br />
+              <span className="text-red-900">بقوة الذكاء الاصطناعي</span>
+            </h1>
+
+            <p className="text-slate-300 text-base md:text-lg max-w-2xl font-normal leading-relaxed">
+              منصة متكاملة تتيح لك إجراء الاستشارات الفورية، تحليل لوائح الدعاوى
+              القضائية، وتلخيص مستندات الـ PDF لكشف الثغرات والرأي القانوني
+              بدقة.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-start gap-4 pt-6">
+              <Link
+                href="/dashboard"
+                className="w-full sm:w-auto px-8 py-3.5 bg-red-900 hover:bg-red-800 text-white font-bold rounded-xl transition-all shadow-xl text-sm flex items-center justify-center gap-2"
+              >
+                <span>جرب المستشار الذكي الآن</span>
+                <ArrowLeft className="w-4 h-4" />
+              </Link>
+              <a
+                href="#services"
+                className="w-full sm:w-auto px-8 py-3.5 bg-stone-800/80 hover:bg-stone-800 text-stone-200 font-semibold rounded-xl border border-stone-700 transition-all text-sm"
+              >
+                استكشف الميزات
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 📌 4. قسم "عن المنصة" (About Section) */}
+      <section id="about" className="py-20 bg-white border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-4">
+            <span className="text-xs font-bold text-red-900 uppercase tracking-widest">
+              الدقة والكفاءة
+            </span>
+            <h2 className="text-3xl font-extrabold text-stone-700 leading-snug">
+              نحدث فارقاً في أسلوب الممارسة والأبحاث القانونية
+            </h2>
+            <p className="text-stone-600 text-sm leading-relaxed">
+              تم تصميم هذه المنصة لتلبي احتياجات المحامين الممارسين، والمتدربين،
+              والأفراد على حد سواء. نحن نجمع بين التقنية السحابية المتقدمة
+              ونماذج الذكاء الاصطناعي المخصصة للأنظمة والقوانين.
+            </p>
+            <ol className="list-disc list-inside space-y-3 text-sm text-stone-700 font-medium pt-2">
+              <li className="leading-relaxed">
+                <span className="font-bold text-red-900 ml-1">سرعة فائقة</span>{" "}
+                في معالجة واستخراج معطيات القضايا.
+              </li>
+              <li className="leading-relaxed">
+                <span className="font-bold text-red-900 ml-1">
+                  قراءة ملفات PDF
+                </span>{" "}
+                الرسمية وتلخيص الوقائع.
+              </li>
+              <li className="leading-relaxed">
+                <span className="font-bold text-red-900 ml-1">بيئة آمنة</span>{" "}
+                تضمن خصوصية المستندات والبيانات.
+              </li>
+            </ol>
+          </div>
+          <div className="bg-stone-900 p-8 rounded-2xl text-stone-100 border border-stone-800 shadow-2xl space-y-4">
+            <div className="text-red-900 text-4xl">
+              <Image src="/scale.png" alt="Scale" width={60} height={32} />
+            </div>
+            <h3 className="text-xl font-bold">لماذا تختار منصتنا؟</h3>
+            <p className="text-xs text-stone-400 leading-relaxed">
+              تختصر المنصة ساعات طويلة من البحث والقراءة اليدوية في أوراق
+              القضايا واللوائح، مما يمنح المحامي رؤية تكتيكية سريعة لاتخاذ
+              القرار المناسب.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 📌 5. قسم الخدمات الذكية (Services Section) */}
+      <section
+        id="services"
+        className="py-20 max-w-7xl mx-auto px-6 space-y-12"
+      >
+        <div className="text-center space-y-3">
+          <span className="text-xs font-bold text-red-900 uppercase tracking-widest">
+            الميزات الرئيسية
+          </span>
+          <h2 className="text-3xl font-bold text-700 text-stone-700">
+            أدوات العمل القانوني الذكي
+          </h2>
+          <p className="text-stone-500 text-sm max-w-xl mx-auto">
+            منظومة متطورة تجمع بين الشات القانوني وحلول تحليل القضايا
+            والمستندات.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="bg-white p-8 rounded-2xl border border-stone-200 hover:border-red-500/50 hover:shadow-xl transition-all space-y-4">
+            <div className="w-12 h-12 bg-amber-50 text-red-900 rounded-xl flex items-center justify-center">
+              <MessageSquare className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-bold text-stone-700">
+              المستشار التفاعلي (الشات)
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              إجابة استشارية لحظية عن الأسئلة والقوانين والمواد الفقهية المعتمدة
+              بشكل دقيق.
+            </p>
+          </div>
+
+          <div className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-red-500/50 hover:shadow-xl transition-all space-y-4">
+            <div className="w-12 h-12 bg-amber-50 text-red-900 rounded-xl flex items-center justify-center">
+              <FileSearch className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-bold text-stone-700">
+              تحليل اللوائح والقضايا
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              إمكانية رفع ملف القضية (PDF) أو كتابة نصها لاستخراج ملخص الوقائع
+              والثغرات القانونية.
+            </p>
+          </div>
+
+          <div className="bg-white p-8 rounded-2xl border border-slate-200 hover:border-red-500/50 hover:shadow-xl transition-all space-y-4">
+            <div className="w-12 h-12 bg-amber-50 text-red-900 rounded-xl flex items-center justify-center">
+              <ShieldCheck className="h-6 w-6" />
+            </div>
+            <h3 className="text-xl font-bold text-stone-700">
+              سجل وحفظ الجلسات
+            </h3>
+            <p className="text-slate-600 text-sm leading-relaxed">
+              أرشفة المحادثات وتقارير التحليل السابقة في مساحة العمل الخاصة بك
+              لسهولة الوصول إليها.
+            </p>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* 📌 6. قسم التواصل والنموذج (Contact Form Section) */}
+      <section
+        id="contact"
+        className="relative text-white py-20 px-6 overflow-hidden"
+      >
+        {/* خلفية الصورة */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/bg2.png"
+            alt="Legal Contact Background"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* طبقة تظليل داكنة لضمان قراءة النصوص ووضوح الفورم */}
+          <div className="absolute inset-0 bg-stone-950/80"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <span className="text-xs font-bold text-red-900 uppercase tracking-widest">
+              تواصل معنا
+            </span>
+            <h2 className="text-3xl font-extrabold text-stone-100">
+              هل لديك استفسار؟
+            </h2>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              يسعدنا استقبال استفساراتك حول المنصة أو إمكانية دمجها في مكتبك
+              القانوني.
+            </p>
+            <div className="space-y-4 text-sm text-slate-300 pt-2">
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-red-900" />
+                <span>info@legal-assistant.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="h-5 w-5 text-red-900" />
+                <span>+962 6 000 0000</span>
+              </div>
+            </div>
+          </div>
+
+          <form
+            onSubmit={(e) => e.preventDefault()}
+            className="bg-stone-900/90 backdrop-blur-md p-6 rounded-2xl border border-stone-800 space-y-4 shadow-2xl"
+          >
+            <div>
+              <label className="block text-xs font-semibold text-stone-300 mb-1">
+                الاسم الكريم
+              </label>
+              <input
+                type="text"
+                placeholder="أدخل اسمك"
+                className="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-sm text-stone-100 focus:outline-none focus:border-red-700 transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-stone-300 mb-1">
+                البريد الإلكتروني
+              </label>
+              <input
+                type="email"
+                placeholder="example@domain.com"
+                className="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-sm text-stone-100 focus:outline-none focus:border-red-700 transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-stone-300 mb-1">
+                تفاصيل الرسالة
+              </label>
+              <textarea
+                rows={3}
+                placeholder="اكتب استفسارك هنا..."
+                className="w-full bg-stone-950 border border-stone-800 rounded-xl p-3 text-sm text-stone-100 focus:outline-none focus:border-red-700 transition-all"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-red-900 hover:bg-red-800 text-stone-950 font-bold py-3 rounded-xl transition-all text-sm shadow-lg"
+            >
+              إرسال الرسالة
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* 📌 7. التذييل (Footer) */}
+      <footer className="bg-stone-950 text-stone-500 py-8 px-6 text-center text-xs border-t border-stone-800">
+        <p>© 2026 منصة المستشار القانوني الذكي - جميع الحقوق محفوظة.</p>
+      </footer>
     </div>
   );
 }
