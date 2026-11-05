@@ -78,7 +78,7 @@ export default function DashboardLayout({ children }) {
         const data = await getHistory();
         if (isSubscribed) setHistoryList(data);
 
-        // 🌟 التعديل: جلب العداد للمتدرب فقط وليس للمحامي
+       
         if (role === 'trainee') {
           const usage = await getLawyerUsageStatus();
           if (isSubscribed) setUsageStatus(usage);
@@ -97,7 +97,7 @@ export default function DashboardLayout({ children }) {
     };
   }, [token, role]);
 
-  // 3️⃣ الاستماع لحدث تحديث السجل عند إضافة قضية جديدة
+
   useEffect(() => {
     if (!token) return;
 
@@ -106,7 +106,7 @@ export default function DashboardLayout({ children }) {
         const data = await getHistory();
         setHistoryList(data);
 
-        // 🌟 التعديل: تحديث العداد للمتدرب فقط
+    
         if (role === 'trainee') {
           const usage = await getLawyerUsageStatus();
           setUsageStatus(usage);
@@ -120,7 +120,7 @@ export default function DashboardLayout({ children }) {
     return () => window.removeEventListener('refresh_chat_history', handleRefresh);
   }, [token, role]);
 
-  // 🆕 دالة البدء بمحادثة جديدة
+  //   البدء بمحادثة جديدة
   const handleNewChat = () => {
     router.push('/dashboard');
 
@@ -129,7 +129,7 @@ export default function DashboardLayout({ children }) {
     }
   };
 
-  // 🗑️ دالة حذف عنصر من السجل
+  //   حذف عنصر من السجل
   const handleDeleteItem = async (e, id) => {
     e.stopPropagation();
 
@@ -167,11 +167,11 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="flex min-h-screen bg-stone-50 text-stone-800" dir="rtl">
       
-      {/* 📌 الشريط الجانبي (Sidebar) */}
+      {/*  (Sidebar) */}
       <aside className="w-64 bg-white border-l border-stone-200 flex flex-col justify-between p-4 shadow-sm h-screen sticky top-0">
         <div className="flex flex-col h-full overflow-hidden">
           
-          {/* شعار المنصة */}
+          
           <div className="flex items-center gap-3 px-3 py-4 border-b border-stone-100 mb-4 shrink-0">
             <div className="rounded-xl bg-stone-50 p-2.5 text-blue-600">
               <Link href="/">
@@ -183,7 +183,7 @@ export default function DashboardLayout({ children }) {
             </div>
           </div>
 
-          {/* 🆕 زر محادثة جديدة وقائمة التنقل */}
+        
           <div className="shrink-0 mb-4">
             <button
               onClick={handleNewChat}
@@ -206,7 +206,7 @@ export default function DashboardLayout({ children }) {
                 <span>المستشار القانوني (الشات)</span>
               </Link>
 
-              {/* 🌟 إظهار رابط تحليل القضايا للمحامي والمتدرب */}
+              
               {(role === 'lawyer' || role === 'trainee') && (
                 <Link
                   href="/dashboard/lawyer"
@@ -223,7 +223,7 @@ export default function DashboardLayout({ children }) {
             </nav>
           </div>
 
-          {/* 📊 شريط استهلاك الحد الأسبوعي (للمتدربين فقط) */}
+         
           {role === 'trainee' && usageStatus && (
             <div className="mb-4 p-3 bg-red-50/70 border border-red-200/60 rounded-xl shrink-0">
               <div className="flex items-center justify-between mb-1.5 text-xs font-semibold text-red-900">
@@ -247,7 +247,7 @@ export default function DashboardLayout({ children }) {
             </div>
           )}
 
-          {/* 📜 قسم سجل المحادثات مع خيار الحذف */}
+         
           <div className="flex-1 overflow-y-auto pr-1 border-t border-stone-100 pt-3 min-h-0">
             <div className="flex items-center gap-2 px-2 mb-2 text-xs font-bold text-stone-400 uppercase tracking-wider">
               <History className="h-3.5 w-3.5" />
@@ -295,7 +295,7 @@ export default function DashboardLayout({ children }) {
 
         </div>
 
-        {/* 🌟 كارت المستخدم */}
+        
         <div className="border-t border-stone-100 pt-3 mt-2 space-y-2.5 shrink-0">
           <div className="flex items-center gap-3 px-2 py-1.5 rounded-lg bg-slate-50">
             <div className="rounded-full bg-stone-100 p-2 text-red-900">
@@ -329,9 +329,9 @@ export default function DashboardLayout({ children }) {
         </div>
       </aside>
 
-      {/* 📌 المحتوى الرئيسي */}
+    
      <main className="relative flex-1 overflow-y-auto p-8">
-  {/* خلفية الصورة */}
+ 
   <div className="absolute inset-0 z-0">
     <Image 
       src="/law-school-time.jpg" 
@@ -340,11 +340,11 @@ export default function DashboardLayout({ children }) {
       className="object-cover object-center filter grayscale contrast-125"
       priority
     />
-    {/* طبقة تظليل داكنة لضمان وضوح المحتوى بالداخل */}
+    
     <div className="absolute inset-0 bg-stone-950/85"></div>
   </div>
 
-  {/* محتوى الصفحة الفعلي */}
+ 
   <div className="relative z-10">
     {children}
   </div>
