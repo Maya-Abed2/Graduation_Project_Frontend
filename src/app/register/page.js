@@ -39,7 +39,7 @@ export default function RegisterPage() {
       formData.append('password', password);
       formData.append('role', role);
       
-      // 🌟 إذا كان الحساب متدرب، نمرر القيم الابتدائية للاستهلاك الأسبوعي
+      //  إذا كان الحساب متدرب، نمرر القيم الابتدائية للاستهلاك الأسبوعي
       if (role === 'trainee') {
         formData.append('weekly_limit', '4');
         formData.append('used_analyses', '0');
@@ -58,7 +58,7 @@ export default function RegisterPage() {
       }, 3000);
 
     } catch (err) {
-      // 🟢 نمرر err.message دائماً لتجنب إرسال Object للـ React State
+      
       setError(err.message || 'حدث خطأ غير متوقع أثناء التسجيل');
     } finally {
       setLoading(false);
@@ -69,7 +69,7 @@ export default function RegisterPage() {
     <div className="flex min-h-screen items-center justify-center bg-liner-to-br from-stone-50 to-stone-100 p-4" dir="rtl">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl border border-stone-100">
         
-        {/* الشعار والترتيب العلوي */}
+        
         <div className="flex flex-col items-center mb-6">
           <div className="rounded-full bg-red-50 p-4 text-blue-600 mb-3">
             <Image className="h-8 w-8" src="/scale.png" alt="Scale" width={32} height={32} />
@@ -78,7 +78,7 @@ export default function RegisterPage() {
           <p className="text-sm text-red-900 mt-1">انضم إلى منصة المساعد القانوني الذكي</p>
         </div>
 
-        {/* تنبيه الخطأ */}
+      
         {error && (
           <div className="mb-4 flex items-center gap-2 rounded-lg bg-red-50 p-4 text-sm text-red-600 border border-red-100">
             <AlertCircle className="h-5 w-5 shrink-0" />
@@ -86,7 +86,7 @@ export default function RegisterPage() {
           </div>
         )}
 
-        {/* تنبيه النجاح */}
+       
         {success && (
           <div className="mb-4 flex items-center gap-2 rounded-lg bg-emerald-50 p-4 text-sm text-emerald-700 border border-emerald-100">
             <CheckCircle2 className="h-5 w-5 shrink-0" />
@@ -96,7 +96,7 @@ export default function RegisterPage() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           
-          {/* حقل اسم المستخدم */}
+          
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">اسم المستخدم</label>
             <div className="relative">
@@ -114,7 +114,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          {/* حقل البريد الإلكتروني */}
+         
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">البريد الإلكتروني</label>
             <div className="relative">
@@ -132,7 +132,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          {/* حقل كلمة المرور */}
+        
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">كلمة المرور</label>
             <div className="relative">
@@ -150,7 +150,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          {/* حقل اختيار نوع الصلاحية */}
+          
           <div>
             <label className="block text-sm font-medium text-stone-700 mb-1">نوع الحساب</label>
             <div className="relative">
@@ -169,7 +169,7 @@ export default function RegisterPage() {
             </div>
           </div>
 
-          {/* 🌟 تنبيه خاص بحساب المتدرب */}
+        
           {role === 'trainee' && (
             <div className="rounded-lg border border-amber-200 bg-amber-50/60 p-3 text-amber-800 text-xs flex items-center gap-2">
               <GraduationCap className="h-4 w-4 text-amber-600 shrink-0" />
@@ -177,7 +177,7 @@ export default function RegisterPage() {
             </div>
           )}
 
-          {/* 🌟 جدار الأمان التفاعلي: يظهر فقط عند اختيار صفة محامي */}
+          
           {role === 'lawyer' && (
             <div className="rounded-lg border border-dashed border-blue-200 bg-blue-50/50 p-4 transition-all animate-fadeIn">
               <label className="flex items-center gap-1.5 text-xs font-semibold text-blue-700 mb-1">
@@ -202,7 +202,7 @@ export default function RegisterPage() {
             </div>
           )}
 
-          {/* زر التثبيت والتسجيل */}
+          
           <button
             type="submit"
             disabled={loading}
@@ -219,7 +219,7 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        {/* العودة للتسجيل */}
+       
         <div className="mt-6 text-center text-sm text-slate-600">
           لديك حساب بالفعل؟{' '}
           <Link href="/login" className="font-semibold text-red-900 hover:underline">
