@@ -14,10 +14,10 @@ export default function LawyerCaseAnalysis() {
   const [analysisReport, setAnalysisReport] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
-  // حالة العداد
+ 
   const [usage, setUsage] = useState({ used: 0, limit: 4, remaining: 4 });
 
-  // 🛡️ حماية المسار وجلب دور المستخدم
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     const role = localStorage.getItem('role');
@@ -30,7 +30,7 @@ export default function LawyerCaseAnalysis() {
       setUserRole(role);
       setAuthorized(true);
 
-      // طلب العداد فقط إذا كان المستخدم متدرباً
+    
       if (role === 'trainee') {
         // eslint-disable-next-line react-hooks/immutability
         fetchUsageStatus(token);
@@ -38,7 +38,7 @@ export default function LawyerCaseAnalysis() {
     }
   }, [router]);
 
-  // دالة لجلب حالة العداد للمتدرب
+  //  لجلب حالة العداد للمتدرب
   const fetchUsageStatus = async (token) => {
     try {
       const cleanToken = token.replace(/^Bearer\s+/i, '');
@@ -145,7 +145,7 @@ export default function LawyerCaseAnalysis() {
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-6 text-right" dir="rtl">
-      {/* عنوان الصفحة */}
+     
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-red-900"><Image src="/scale.png" alt="المساعد الذكي" width={40} height={40} className="inline-block ml-2" /> المساعد الذكي لتحليل القضاية والمستندات</h1>
@@ -154,7 +154,7 @@ export default function LawyerCaseAnalysis() {
           </p>
         </div>
 
-        {/* 🌟 كارت العداد: يظهر فقط إذا كان المستخدم متدرباً (trainee) */}
+        
         {userRole === 'trainee' && (
           <div className="bg-red-50 border border-red-200 p-3.5 rounded-xl text-xs space-y-1.5 min-w-50">
             <div className="flex items-center justify-between text-stone-900 font-bold">
@@ -176,17 +176,17 @@ export default function LawyerCaseAnalysis() {
         )}
       </div>
 
-      {/* رسالة الخطأ */}
+     
       {errorMsg && (
         <div className="bg-red-50 text-red-700 p-4 rounded-xl border border-red-200 text-sm">
           ⚠️ {errorMsg}
         </div>
       )}
 
-      {/* نموذج الإدخال */}
+    
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 space-y-6">
         
-        {/* رفع ملف PDF */}
+      
         <div>
           <label className="block text-sm font-semibold text-slate-700 mb-2">
             📄 رفع لائحة الدعوى أو الملف (PDF):
@@ -207,7 +207,7 @@ export default function LawyerCaseAnalysis() {
             </div>
           </div>
 
-          {/* تفاصيل الملف المرفوع */}
+         
           {pdfFile && (
             <div className="mt-3 flex items-center justify-between bg-stone-100 border border-stone-200 p-3 rounded-lg text-sm text-stone-800">
               <span>📌 تم إرفاق: <strong>{pdfFile.name}</strong> ({(pdfFile.size / 1024 / 1024).toFixed(2)} MB)</span>
@@ -224,7 +224,7 @@ export default function LawyerCaseAnalysis() {
 
         <div className="text-center text-stone-400 text-xs font-semibold">أو</div>
 
-        {/* إدخال نص مباشر */}
+      
         <div>
           <label className="block text-sm font-semibold text-stone-700 mb-2">
             📝 أو اكتب/الصق تفاصيل القضية هنا:
@@ -238,7 +238,7 @@ export default function LawyerCaseAnalysis() {
           />
         </div>
 
-        {/* زر الإرسال */}
+      
         <button
           type="submit"
           disabled={loading}
@@ -254,7 +254,7 @@ export default function LawyerCaseAnalysis() {
         </button>
       </form>
 
-      {/* تقرير التحليل المنسق بالـ Markdown */}
+     
       {analysisReport && (
         <div className="bg-stone-900 text-slate-100 p-6 rounded-2xl shadow-xl space-y-4 border border-stone-800">
           <div className="flex items-center justify-between border-b border-stone-700 pb-3">
