@@ -21,29 +21,13 @@ export default function Home() {
       className="min-h-screen bg-slate-50 text-slate-800 font-sans"
       dir="rtl"
     >
-      {/* 📌 1. الشريط العلوي للتواصل والمعلومات */}
-      {/* <div className="bg-slate-950 text-slate-400 text-xs py-2 px-6 border-b border-slate-800 hidden md:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex gap-6">
-            <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5 text-amber-500" /> الأحد - الخميس: 9:00 ص - 5:00 م</span>
-            <span className="flex items-center gap-1.5"><Phone className="w-3.5 h-3.5 text-amber-500" /> +962 6 000 0000</span>
-          </div>
-          <div>
-            <span className="text-slate-300 font-medium">المنصة الذكية الأولى للخدمات والاستشارات القانونية</span>
-          </div>
-        </div>
-      </div> */}
 
-      {/* 📌 2. الهيدر ورأس الصفحة (Navbar) */}
+      {/* (Navbar) */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* <Scale className="h-6 w-6" /> */}
             <Image src="/scale.png" alt="Scale" width={60} height={32} />
-            {/* <div>
-              <span className="font-bold text-xl text-stone-700 block leading-tight tracking-wide">المستشار القانوني</span>
-              <span className="text-[11px] text-red-900 font-semibold uppercase tracking-wider">نظام تحليل القضايا واللوائح</span>
-            </div> */}
+           
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-700">
@@ -71,23 +55,17 @@ export default function Home() {
             >
               تسجيل الدخول
             </Link>
-            {/* <Link 
-              href="/dashboard" 
-              className="px-5 py-2.5 text-sm font-bold bg-red-900 hover:bg-red-800 text-stone-800 rounded-xl transition-all shadow-md flex items-center gap-2"
-            >
-              <span>دخول اللوحة</span>
-              <ArrowLeft className="h-4 w-4" />
-            </Link> */}
+            
           </div>
         </div>
       </header>
 
-      {/* 📌 3. قسم البداية الرئيسي (Hero Section) */}
+      {/*  (Hero Section) */}
       <section
         id="hero"
         className="relative text-white py-32 px-6 overflow-hidden min-h-[85vh] flex items-center"
       >
-        {/* خلفية الصورة */}
+      
         <div className="absolute inset-0 z-0">
           <Image
             src="/bg1.png"
@@ -96,12 +74,12 @@ export default function Home() {
             className="object-cover object-center filter grayscale contrast-125"
             priority
           />
-          {/* طبقة تظليل داكنة لضمان وضوح النصوص فوق الصورة */}
+      
           <div className="absolute inset-0 bg-stone-950/75"></div>
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* النصوص والأزرار (مرتبة على الجانب الأيمن بلغة الموقع) */}
+        
           <div className="lg:col-span-8 space-y-6 text-right">
             <h1 className="text-4xl md:text-6xl font-black leading-tight text-slate-100">
               خبرة قانونية معززة <br />
@@ -133,7 +111,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 📌 4. قسم "عن المنصة" (About Section) */}
+      {/*(About Section) */}
       <section id="about" className="py-20 bg-white border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-4">
@@ -179,7 +157,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 📌 5. قسم الخدمات الذكية (Services Section) */}
+      {/* (Services Section) */}
       <section
         id="services"
         className="py-20 max-w-7xl mx-auto px-6 space-y-12"
@@ -239,7 +217,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 📌 6. قسم التواصل والنموذج (Contact Form Section) */}
+      {/* (Contact Form Section) */}
       <section
         id="contact"
         className="relative text-white py-20 px-6 overflow-hidden"
@@ -253,7 +231,7 @@ export default function Home() {
             className="object-cover object-center"
             priority
           />
-          {/* طبقة تظليل داكنة لضمان قراءة النصوص ووضوح الفورم */}
+          
           <div className="absolute inset-0 bg-stone-950/80"></div>
         </div>
 
@@ -325,7 +303,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 📌 7. التذييل (Footer) */}
+      {/* (Footer) */}
       <footer className="bg-stone-950 text-stone-500 py-8 px-6 text-center text-xs border-t border-stone-800">
         <p>© 2026 منصة المستشار القانوني الذكي - جميع الحقوق محفوظة.</p>
       </footer>
