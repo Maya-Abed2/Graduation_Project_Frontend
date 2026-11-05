@@ -44,7 +44,7 @@ export default function LoginPage() {
       localStorage.setItem('username', data.username || username);
       localStorage.setItem('role', userRole);
 
-      // 5. حفظ كائن المستخدم كاملاً لسهولة الوصول للعدادات في المكونات
+
       const userData = {
         username: data.username || username,
         role: userRole,
@@ -113,7 +113,7 @@ export default function LoginPage() {
           </button>
         </div>
 
-        {/* 📌 الإضافة: رابط إنشاء حساب جديد */}
+       
         <div className="text-center pt-2 border-t border-stone-100">
           <p className="text-sm text-stone-600">
             ليس لديك حساب؟{' '}
