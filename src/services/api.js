@@ -1,18 +1,18 @@
-// 📌 تحديد الرابط الأساسي للـ Backend (يتطابق مع FastAPI)
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000';
 
-// 🔑 دالة مساعدة لجلب الـ Token بشكل نظيف وإعداد الـ Headers
+
 const getAuthHeaders = (isJson = true) => {
   let token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
   
   const headers = {};
 
-  // إضافة Content-Type فقط عند الحاجة (إرسال بيانات JSON)
+
   if (isJson) {
     headers['Content-Type'] = 'application/json';
   }
 
-  // تنظيف التوكن وضمان إضافة Bearer مرة واحدة فقط
+  
   if (token) {
     token = token.replace(/^Bearer\s+/i, '');
     headers['Authorization'] = `Bearer ${token}`;
@@ -21,7 +21,7 @@ const getAuthHeaders = (isJson = true) => {
   return headers;
 };
 
-// 1️⃣ دالة تسجيل حساب جديد (Register)
+//  (Register)
 export const registerUser = async (formData) => {
   const response = await fetch(`${API_BASE_URL}/api/auth/register`, {
     method: 'POST',
@@ -43,7 +43,7 @@ export const registerUser = async (formData) => {
   return data;
 };
 
-// 2️⃣ دالة تسجيل الدخول (Login)
+// (Login)
 export const loginUser = async (username, password) => {
   const formData = new FormData();
   formData.append('username', username);
@@ -64,7 +64,7 @@ export const loginUser = async (username, password) => {
   }
 
   if (typeof window !== 'undefined') {
-    // حفظ التوكن نظيفاً
+
     const cleanToken = data.access_token ? data.access_token.replace(/^Bearer\s+/i, '') : '';
     localStorage.setItem('token', cleanToken);
     
@@ -81,7 +81,7 @@ export const loginUser = async (username, password) => {
   return data;
 };
 
-// 3️⃣ دالة إرسال سؤال للمستشار القانوني (Chat Query)
+
 export const sendChatQuery = async (query) => {
   const response = await fetch(`${API_BASE_URL}/api/chat`, {
     method: 'POST',
@@ -97,7 +97,7 @@ export const sendChatQuery = async (query) => {
   return await response.json();
 };
 
-// 4️⃣ دالة تحليل القضية
+//   تحليل القضية
 export const analyzeLawyerCase = async (caseDetails) => {
   const response = await fetch(`${API_BASE_URL}/api/lawyer/analyze`, {
     method: 'POST',
@@ -113,7 +113,7 @@ export const analyzeLawyerCase = async (caseDetails) => {
   return await response.json();
 };
 
-// 5️⃣ دالة جلب حالة الاستهلاك والحد الأسبوعي (محدثة لمنع خطأ 400)
+//   جلب حالة الاستهلاك والحد الأسبوعي 
 export const getLawyerUsageStatus = async () => {
   const response = await fetch(`${API_BASE_URL}/api/lawyer/usage-status`, {
     method: 'GET',
@@ -128,7 +128,7 @@ export const getLawyerUsageStatus = async () => {
   return await response.json();
 };
 
-// 6️⃣ دالة جلب قائمة السجل السابق
+//   جلب قائمة السجل السابق
 export const getHistory = async () => {
   const response = await fetch(`${API_BASE_URL}/api/history`, {
     method: 'GET',
@@ -143,7 +143,7 @@ export const getHistory = async () => {
   return await response.json();
 };
 
-// 7️⃣ دالة جلب تفاصيل محادثة/تحليل معين عبر الـ ID
+//  دالة جلب تفاصيل محادثة/تحليل معين عبر الـ ID
 export const getHistoryDetail = async (historyId) => {
   const response = await fetch(`${API_BASE_URL}/api/history/${historyId}`, {
     method: 'GET',
@@ -158,7 +158,7 @@ export const getHistoryDetail = async (historyId) => {
   return await response.json();
 };
 
-// 8️⃣ دالة حذف عنصر محدد من السجل السابق
+//   حذف عنصر محدد من السجل السابق
 export const deleteHistoryItem = async (historyId) => {
   const response = await fetch(`${API_BASE_URL}/api/history/${historyId}`, {
     method: 'DELETE',
