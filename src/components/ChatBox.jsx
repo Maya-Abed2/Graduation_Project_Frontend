@@ -19,7 +19,7 @@ import {
 import { sendChatQuery as sendChatMessage, getHistoryDetail } from "../services/api";
 import Image from "next/image";
 
-// قائمة البطاقات المقترحة حسب مجلدات البيانات
+
 const SUGGESTED_CARDS = [
   {
     id: "civil",
@@ -82,7 +82,7 @@ function ChatBoxContent() {
     scrollToBottom();
   }, [messages, loading]);
 
-  // 🔄 الاستماع لحدث تصفير الشات
+ 
   useEffect(() => {
     const handleResetChat = () => {
       setMessages([
@@ -103,7 +103,7 @@ function ChatBoxContent() {
     return () => window.removeEventListener("reset_chat_window", handleResetChat);
   }, []);
 
-  // 📜 جلب تفاصيل السجل
+ 
   useEffect(() => {
     if (!historyId) return;
 
@@ -136,7 +136,7 @@ function ChatBoxContent() {
     loadHistoryItem();
   }, [historyId]);
 
-  // دالة الإرسال المركزية (تقبل إما إدخال من الحقل أو نص من بطاقة)
+
   const executeSend = async (queryText) => {
     if (!queryText.trim() || loading) return;
 
@@ -203,7 +203,7 @@ function ChatBoxContent() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-120px)] bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden" dir="rtl">
-      {/* رأس الشات */}
+     
       <div className="flex items-center justify-between px-6 py-4 bg-stone-50 border-b border-stone-200">
         <div className="flex items-center gap-3">
             <Image src="/chat.png" alt="Logo" width={60} height={60}  />
@@ -219,7 +219,7 @@ function ChatBoxContent() {
         </div>
       </div>
 
-      {/* منطقة عرض المحادثة */}
+     
       <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-stone-50/50">
         {messages.map((msg) => (
           <div
@@ -255,7 +255,7 @@ function ChatBoxContent() {
                 {msg.text}
               </div>
 
-              {/* المصادر */}
+             
               {msg.sources && msg.sources.length > 0 && (
                 <div className="bg-amber-50 border border-red-900 rounded-xl p-3 text-xs text-red-900 space-y-1">
                   <div className="flex items-center gap-1.5 font-bold text-red-800 mb-1">
@@ -277,7 +277,7 @@ function ChatBoxContent() {
           </div>
         ))}
 
-        {/* 🌟 عرض بطاقات الأسئلة المقترحة إذا كانت المحادثة جديدة فقط */}
+        
         {messages.length === 1 && !loading && (
           <div className="pt-4 space-y-3">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
@@ -327,7 +327,7 @@ function ChatBoxContent() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* حقل الإدخال */}
+ 
       <form
         onSubmit={handleFormSubmit}
         className="p-4 bg-white border-t border-stone-200 flex gap-2"
